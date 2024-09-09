@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>推しの子のホームページ (JJC)</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* 画像をページの背景に設定し、スクロールを有効化 */
+        body {
+            margin: 0;
+            height: 100%;
+            color: white;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* 背景画像を設定 */
+        .background-image {
+            position: relative;
+            top: 0;
+            left: 0;
+            width: 100%;
+            min-height: 100vh;
+        }
+
+        /* YouTubeプレーヤーを中央に配置 */
+        .youtube-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* コンテンツのスタイル */
+        .content {
+            position: relative;
+            z-index: 1;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        /* 最新情報とツイッターのコンテナ */
+        .info-twitter-container {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        /* 最新情報セクション */
+        .latest-info {
+            flex: 1;
+            margin-right: 10px;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        /* ツイッターセクション */
+        .twitter-feed {
+            flex: 1;
+            margin-left: 10px;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        /* ポップアップボタンのスタイル */
+        .popup-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #008CBA;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        /* フルスクリーンポップアップのスタイル */
+        .popup-content {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgb(0, 0, 0);
+            color: white;
+            padding: 20px;
+            box-sizing: border-box;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* ポップアップのヘッダーのスタイル */
+        .popup-header {
+            margin-bottom: 20px;
+        }
+
+        /* ポップアップが表示されているときのスタイル */
+        .popup-content.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* ポップアップが非表示になるときのスタイル */
+        .popup-content.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* ポップアップ内のリンクを2列に配置 */
+        .links-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            text-align: center;
+        }
+
+        /* ポップアップ内のタイトルのスタイル */
+        .section-title {
+            font-size: 3em;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .popup-content a {
+            display: block;
+            margin: 10px 0;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .popup-content a:hover {
+            text-decoration: underline;
+        }
+
+        /* 閉じるボタンのスタイル */
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #ff4d4d;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* ポップアップが表示されているときのボタンのスタイル */
+        .popup-content.show + .popup-btn {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- 背景画像 -->
+    <img src="Images/OsinokoImage.webp" class="background-image" alt="背景画像">
+
+    <!-- YouTube埋め込みプレーヤー -->
+    <div class="youtube-container" style="margin-bottom: 20px;">
+        <iframe id="js-replaceYoutube" frameborder="0" allowfullscreen="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" title="TＶアニメ『【推しの子】』第2期メインPV第2弾【2024年7月3日より放送開始】" width="1600" height="390" src="https://www.youtube.com/embed/QMuajQlx64c?autoplay=1&amp;controls=0&amp;fs=0&amp;loop=1&amp;modestbranding=1&amp;rel=0&amp;showinfo=0&amp;html5=1&amp;enablejsapi=1&amp;origin=https%3A%2F%2Fichigoproduction.com&amp;widgetid=1"></iframe>
+    </div>
+
+    <div class="content">
+        <main>
+            <h2>INFORMATION</h2>
+        </main>
+    </div>
+
+    <!-- 最新情報とツイッターセクション -->
+    <div class="info-twitter-container">
+        <!-- 最新情報セクション -->
+        <div class="latest-info">
+            <h3>最新情報</h3>
+            <ul>
+                <li>最新エピソードの放送日: 2024年9月10日</li>
+                <li>新キャラクター発表: 2024年9月5日</li>
+                <li>Blu-ray&DVD発売決定: 2024年10月1日</li>
+            </ul>
+        </div>
+
+        <!-- ツイッターセクション -->
+        <div class="twitter-feed">
+            <h3>Twitter</h3>
+            <!-- Twitterの埋め込みウィジェット -->
+            <a class="twitter-timeline" href="https://twitter.com/anime_oshinoko?ref_src=twsrc%5Etfw" data-width="800px" data-height="500px"></a> Tweets by anime_oshinoko
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
+    </div>
+
+    <!-- ポップアップボタン -->
+    <button class="popup-btn" id="popup-btn" onclick="showPopup()">メニュー</button>
+
+    <!-- フルスクリーンポップアップコンテンツ -->
+    <div class="popup-content" id="popup">
+        <button class="close-btn" onclick="hidePopup()">閉じる</button>
+        <div class="popup-header">
+            <a href="index.html">
+                <div class="section-title">【推しの子】</div>
+            </a>
+        </div>
+        <div class="links-container">
+            <a href="Links/news.html">News</a>
+            <a href="Links/onair.html">ON AIR</a>
+            <a href="Links/staffcast.html">STAFF/CAST</a>
+            <a href="Links/story.html">STORY</a>
+            <a href="Links/chara.html">CHARACTER</a>
+            <a href="Links/theater.html">THEATER</a>
+            <a href="Links/event.html">EVENT</a>
+            <a href="Links/bd.html">Blu-ray&DVD</a>
+            <a href="Links/music.html">MUSIC</a>
+            <a href="Links/movie.html">MOVIE</a>
+        </div>
+    </div>
+
+    <script>
+        // ポップアップを表示する関数
+        function showPopup() {
+            var popup = document.getElementById("popup");
+            var button = document.getElementById("popup-btn");
+            popup.classList.add("show");
+            popup.classList.remove("fade-out");
+            button.style.display = 'none'; // ボタンを非表示にする
+        }
+
+        // ポップアップを非表示にする関数
+        function hidePopup() {
+            var popup = document.getElementById("popup");
+            var button = document.getElementById("popup-btn");
+            popup.classList.add("fade-out");
+
+            // アニメーション終了後にポップアップを完全に非表示にする
+            setTimeout(function() {
+                popup.classList.remove("show");
+                popup.classList.remove("fade-out");
+                button.style.display = 'block'; // ボタンを再表示する
+            }, 500); // フェードアウトの時間に合わせる
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.header {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: #fff;
+}
+
+.header .title {
+    display: block;
+    font-size: 3em;
+    font-weight: bold;
+    color: #fc57ff; /* リンクの色 */
+    text-decoration: none; /* リンクの下線を消す */
+    margin-bottom: 10px;
+}
+
+.header .title:hover {
+    text-decoration: underline; /* ホバー時に下線を追加 */
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+.news-container {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.news-item {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.date {
+    display: block;
+    font-size: 0.9em;
+    color: #888;
+    margin-bottom: 5px;
+}
+
+h2 {
+    font-size: 1.2em;
+    margin: 0;
+}
+
+/* フッターのスタイル */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
