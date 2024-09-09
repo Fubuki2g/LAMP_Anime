@@ -46,13 +46,13 @@ body {
 
 .date {
     display: block;
-    font-size: 0.9em;
+    font-size: 0.5em;
     color: #888;
     margin-bottom: 5px;
 }
 
 h2 {
-    font-size: 1.2em;
+    font-size: 1em;
     margin: 0;
 }
 
